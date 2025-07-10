@@ -1,0 +1,61 @@
+/* style.css - تصميم فخم لمنصة OptaVita OS */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #0f0f0f;
+  color: #ffffff;
+}
+
+header {
+  background: linear-gradient(90deg, #0a0a23, #1a1a4f);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #00ffd5;
+  letter-spacing: 2px;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #00ffd5;
+}
+
+section {
+  padding: 50px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+button {
+  background: #00ffd5;
+  color: #000000;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #00c7b2;
+  transform: scale(1.05);
+}
