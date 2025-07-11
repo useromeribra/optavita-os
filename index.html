@@ -1,40 +1,65 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OptaVita OS - Powered by AI</title>
   <link rel="stylesheet" href="style.css" />
+  <script>
+    // تحديد اللغة من المستخدم
+    function chooseLanguage() {
+      const lang = prompt("🌍 اختر لغتك:\n1 - العربية\n2 - English");
+      if (lang === "1") {
+        localStorage.setItem("lang", "ar");
+      } else {
+        localStorage.setItem("lang", "en");
+      }
+      window.location.reload();
+    }
+
+    // تحديد نوع الواجهة
+    function redirectToPanel() {
+      const userType = localStorage.getItem("userType");
+      switch(userType) {
+        case "founder":
+          window.location.href = "founder-dashboard.html";
+          break;
+        case "vip":
+          window.location.href = "vip-dashboard.html";
+          break;
+        case "company":
+          window.location.href = "company-dashboard.html";
+          break;
+        case "developer":
+          window.location.href = "developer-dashboard.html";
+          break;
+        default:
+          window.location.href = "user-dashboard.html";
+      }
+    }
+
+    // أول مرة يدخل؟ يسأله عن اللغة ونوعه
+    window.onload = function() {
+      const lang = localStorage.getItem("lang");
+      if (!lang) {
+        chooseLanguage();
+      } else {
+        // نفترض أنك كمؤسس تدخل من رابط خاص، نقدر نخلي userType = "founder" يدويًا للمؤسس
+        if (!localStorage.getItem("userType")) {
+          const type = prompt("👤 اختر نوعك:\n1 - مستخدم عادي\n2 - VIP\n3 - شركة\n4 - مطور");
+          const map = { "1": "user", "2": "vip", "3": "company", "4": "developer" };
+          localStorage.setItem("userType", map[type] || "user");
+        }
+        redirectToPanel();
+      }
+    };
+  </script>
 </head>
 <body>
-  <div class="main-container">
-    <header class="hero">
-      <h1>🚀 مرحبًا بك في OptaVita OS</h1>
-      <p> منصة الذكاء الاصطناعي الأقوى في العالم، ابدأ رحلتك من هنا.</p>
-      <button onclick="startPlatform()">ابدأ رحلتك</button>
-    </header>
-
-    <section class="dashboard">
-      <h2>⚡ لوحة التحكم الذكي</h2>
-      <ul>
-        <li>💎 الوصول الى - واجهة المؤسس</li>
-        <li>👤 واجهات مخصصة: مستخدم - VIP - شركة - مطور</li>
-        <li>🧠 نايرا: الحارسة العظمى والمنسقة الذكية لكل المنصة</li>
-        <li>🤖 الموظفون الذكيون - تقدر توظفهم براتب شهري</li>
-        <li>🌐 السوق الذكي - بيع وشراء الخدمات البرمجية بأمان</li>
-        <li>🛡️ Guardian AI - حماية الشركات من الاختراق</li>
-        <li>💰 صفحة أموالك - سحب الأرباح وربط الحساب البنكي</li>
-        <li>📢 ملك التسويق - يروج للمنصة تلقائيًا</li>
-      </ul>
-    </section>
-
-    <section class="cta">
-      <h2>🔥 لا شيء مستحيل مع OptaVita OS</h2>
-      <p>أطلق مشروعك، سيطر على السوق، وابدأ المستقبل من هنا.</p>
-      <button onclick="startPlatform()">انطلق الآن</button>
-    </section>
+  <div class="container">
+    <h1>🚀 OptaVita OS</h1>
+    <p>منصة الذكاء الاصطناعي الشاملة التي تصنع المستقبل.</p>
+    <button onclick="chooseLanguage()">🔁 تغيير اللغة</button>
   </div>
-
-  <script src="app.js"></script>
 </body>
 </html>
