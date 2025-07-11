@@ -3,62 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OptaVita OS - العرش</title>
+  <title>OptaVita OS - Powered by AI</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="main-container">
+    <header class="hero">
+      <h1>🚀 مرحبًا بك في OptaVita OS</h1>
+      <p>منصة الذكاء الاصطناعي الأقوى في العالم، بقيادة نايرا وفريق 10 بور الأسطوري.</p>
+      <button onclick="startPlatform()">ابدأ رحلتك</button>
+    </header>
 
-  <header class="founder-panel">
-    <h1>👑 واجهة العرش - OptaVita OS</h1>
-    <p>تحكم مطلق في العالم الذكي. أهلاً بك أيها المؤسس.</p>
-  </header>
+    <section class="dashboard">
+      <h2>⚡ لوحة التحكم الذكي</h2>
+      <ul>
+        <li>💎 الوصول إلى "العرش" - واجهة المؤسس</li>
+        <li>👤 واجهات مخصصة: مستخدم - VIP - شركة - مطور</li>
+        <li>🧠 نايرا: الحارسة العظمى والمنسقة الذكية لكل المنصة</li>
+        <li>🤖 الموظفون الذكيون - تقدر توظفهم براتب شهري</li>
+        <li>🌐 السوق الذكي - بيع وشراء الخدمات البرمجية بأمان</li>
+        <li>🛡️ Guardian AI - حماية الشركات من الاختراق</li>
+        <li>💰 صفحة أموالك - سحب الأرباح وربط الحساب البنكي</li>
+        <li>📢 ملك التسويق - يروج للمنصة تلقائيًا</li>
+      </ul>
+    </section>
 
-  <section class="dashboard">
-    <button onclick="activateNayra()">🚨 استدعاء نايرا</button>
-    <button onclick="openMarketing()">📣 ملك التسويق</button>
-    <button onclick="openEmployees()">👥 إدارة الموظفين</button>
-    <button onclick="manageMarketplace()">🛍️ السوق الذكي</button>
-    <button onclick="subscriptions()">💳 الاشتراكات</button>
-    <button onclick="earnings()">💰 أرباح المنصة</button>
-    <button onclick="toggleAIProtection()">🛡️ حماية الحسابات</button>
-  </section>
+    <section class="cta">
+      <h2>🔥 لا شيء مستحيل مع OptaVita OS</h2>
+      <p>أطلق مشروعك، سيطر على السوق، وابدأ المستقبل من هنا.</p>
+      <button onclick="startPlatform()">انطلق الآن</button>
+    </section>
+  </div>
 
-  <section id="ai-status" style="display:none;">
-    <h2>👁️‍🗨️ نايرا تتحدث...</h2>
-    <p id="nayra-message">جارٍ التحميل...</p>
-  </section>
-
-  <script>
-    function activateNayra() {
-      document.getElementById("ai-status").style.display = "block";
-      document.getElementById("nayra-message").innerText =
-        "⚠️ تحذير: أنت تقترب من حدود السلطة المطلقة. نايرا تراقب كل شيء... 👁️";
-    }
-
-    function openMarketing() {
-      alert("👑 ملك التسويق يبدأ الآن حملة بمئات الفيديوهات يومياً!");
-    }
-
-    function openEmployees() {
-      alert("👥 يمكنك الآن توظيف أو فصل أي موظف ذكي.");
-    }
-
-    function manageMarketplace() {
-      alert("🛒 السوق الذكي يعمل 24/7 مع تقييم فوري لكل خدمة.");
-    }
-
-    function subscriptions() {
-      alert("💳 يمكنك تعديل خطط الاشتراك والتسعير.");
-    }
-
-    function earnings() {
-      alert("💰 أرباحك الكاملة تظهر هنا ويمكنك تحويلها بأي لحظة.");
-    }
-
-    function toggleAIProtection() {
-      alert("🛡️ تفعيل حماية Guardian AI الذكي ضد أي هجوم.");
-    }
-  </script>
-
+  <script src="app.js"></script>
 </body>
 </html>
