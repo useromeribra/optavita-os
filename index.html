@@ -4,42 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OptaVita OS - Start Your Journey</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to right, #001f3f, #0074D9);
+      color: white;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    select, input, button {
+      padding: 12px;
+      font-size: 16px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    select {
+      width: 200px;
+    }
+
+    button {
+      background-color: #00FFCC;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #00e6b8;
+    }
+
+    .glow {
+      text-shadow: 0 0 10px white;
+    }
+  </style>
 </head>
 <body>
-  <!-- المرحلة 1: اختيار اللغة -->
+  <!-- اللغة -->
   <div id="language-section">
-    <h1>🌍 Welcome to OptaVita OS</h1>
-    <p>Please choose your language to begin your journey.</p>
+    <h1 class="glow">🌍 Welcome to OptaVita OS</h1>
+    <p>The smartest platform in the world. Please choose your language to begin your journey.</p>
     <select id="language-select">
+      <option value="">-- Choose Language --</option>
       <option value="en">English</option>
       <option value="ar">العربية</option>
       <option value="zh">中文</option>
       <option value="ja">日本語</option>
       <option value="tr">Türkçe</option>
-      <!-- زود لغات كمان هنا -->
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <!-- ضيف قد ما بدك لغات -->
     </select>
-    <button onclick="goToLogin()">Start Your Journey</button>
+    <br>
+    <button onclick="goToLogin()">🚀 Start Your Journey</button>
   </div>
 
-  <!-- المرحلة 2: تسجيل الدخول -->
-  <div id="login-section" style="display: none;">
-    <h2>🔐 Login to Your Account</h2>
-    <input type="email" placeholder="Email" />
-    <input type="password" placeholder="Password" />
+  <!-- تسجيل الدخول -->
+  <div id="login-section" class="hidden">
+    <h2 class="glow">🔐 Login to Your Account</h2>
+    <input type="email" placeholder="Email Address" /><br>
+    <input type="password" placeholder="Password" /><br>
     <button onclick="goToUserType()">Login</button>
   </div>
 
-  <!-- المرحلة 3: اختيار نوع المستخدم -->
-  <div id="user-type-section" style="display: none;">
-    <h2>👤 Select User Type</h2>
-    <button>Individual</button>
-    <button>Company</button>
-    <button>VIP</button>
-    <button>Developer</button>
+  <!-- نوع المستخدم -->
+  <div id="user-type-section" class="hidden">
+    <h2 class="glow">👥 Choose User Type</h2>
+    <button>👤 Individual</button>
+    <button>🏢 Company</button>
+    <button>💎 VIP</button>
+    <button>👨‍💻 Developer</button>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function goToLogin() {
+      const selectedLang = document.getElementById("language-select").value;
+      if (!selectedLang) {
+        alert("Please choose a language!");
+        return;
+      }
+
+      document.getElementById("language-section").style.display = "none";
+      document.getElementById("login-section").style.display = "block";
+    }
+
+    function goToUserType() {
+      document.getElementById("login-section").style.display = "none";
+      document.getElementById("user-type-section").style.display = "block";
+    }
+  </script>
 </body>
 </html>
-
