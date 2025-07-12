@@ -1,3 +1,4 @@
+/* 🌌 الخلفية الأساسية للصفحة */
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -10,11 +11,13 @@ body {
   height: 100vh;
 }
 
+/* 💠 حاوية المحتوى */
 .container {
   text-align: center;
   padding: 20px;
 }
 
+/* 🔡 العناوين */
 .headline {
   font-size: 2.5em;
   margin-bottom: 0.3em;
@@ -25,6 +28,7 @@ body {
   margin-bottom: 1.5em;
 }
 
+/* 🌍 مربع البحث عن اللغة */
 #language-search {
   padding: 10px;
   font-size: 1em;
@@ -34,6 +38,7 @@ body {
   border: none;
 }
 
+/* 🌐 أزرار اللغات */
 #language-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -57,6 +62,7 @@ body {
   background-color: #00b3e6;
 }
 
+/* 🚀 زر بدء الرحلة */
 #start-btn {
   padding: 12px 30px;
   font-size: 1.1em;
@@ -71,4 +77,56 @@ body {
 #start-btn:disabled {
   background-color: #555;
   cursor: not-allowed;
+}
+
+/* 🔐 واجهة تسجيل الدخول */
+.login-container {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.login-container h1 {
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  padding: 10px;
+  width: 80%;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.login-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.create-btn {
+  background-color: #28a745;
+  color: #fff;
 }
