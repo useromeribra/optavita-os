@@ -3,63 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OptaVita OS - Powered by AI</title>
-  <link rel="stylesheet" href="style.css" />
-  <script>
-    // تحديد اللغة من المستخدم
-    function chooseLanguage() {
-      const lang = prompt("🌍 اختر لغتك:\n1 - العربية\n2 - English");
-      if (lang === "1") {
-        localStorage.setItem("lang", "ar");
-      } else {
-        localStorage.setItem("lang", "en");
-      }
-      window.location.reload();
+  <title>OptaVita OS - Choose Language & Role</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #090a0f, #1c1f26);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
     }
 
-    // تحديد نوع الواجهة
-    function redirectToPanel() {
-      const userType = localStorage.getItem("userType");
-      switch(userType) {
-        case "founder":
-          window.location.href = "founder-dashboard.html";
-          break;
-        case "vip":
-          window.location.href = "vip-dashboard.html";
-          break;
-        case "company":
-          window.location.href = "company-dashboard.html";
-          break;
-        case "developer":
-          window.location.href = "developer-dashboard.html";
-          break;
-        default:
-          window.location.href = "user-dashboard.html";
-      }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00ffd5;
     }
 
-    // أول مرة يدخل؟ يسأله عن اللغة ونوعه
-    window.onload = function() {
-      const lang = localStorage.getItem("lang");
-      if (!lang) {
-        chooseLanguage();
-      } else {
-        // نفترض أنك كمؤسس تدخل من رابط خاص، نقدر نخلي userType = "founder" يدويًا للمؤسس
-        if (!localStorage.getItem("userType")) {
-          const type = prompt("👤 اختر نوعك:\n1 - مستخدم عادي\n2 - VIP\n3 - شركة\n4 - مطور");
-          const map = { "1": "user", "2": "vip", "3": "company", "4": "developer" };
-          localStorage.setItem("userType", map[type] || "user");
-        }
-        redirectToPanel();
-      }
-    };
-  </script>
+    .section {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .section h2 {
+      margin-bottom: 15px;
+      color: #ffffffc0;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #00ffd5;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #00cca9;
+    }
+
+    .footer {
+      margin-top: 30px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🚀 OptaVita OS</h1>
-    <p>منصة الذكاء الاصطناعي الشاملة التي تصنع المستقبل.</p>
-    <button onclick="chooseLanguage()">🔁 تغيير اللغة</button>
+
+  <h1>🌐 OptaVita OS</h1>
+
+  <div class="section">
+    <h2>اختر لغتك المفضلة / Choose Your Language</h2>
+    <div class="btn-grid" id="languageSelection">
+      <button onclick="selectLang('en')">English</button>
+      <button onclick="selectLang('ar')">العربية</button>
+      <button onclick="selectLang('zh')">中文</button>
+      <button onclick="selectLang('fr')">Français</button>
+      <button onclick="selectLang('tr')">Türkçe</button>
+      <button onclick="selectLang('ja')">日本語</button>
+      <button onclick="selectLang('ru')">Русский</button>
+      <button onclick="selectLang('es')">Español</button>
+    </div>
   </div>
+
+  <div class="section">
+    <h2>اختر نوع المستخدم / Choose User Type</h2>
+    <div class="btn-grid" id="userSelection">
+      <button onclick="selectRole('founder')">👑 المؤسس</button>
+      <button onclick="selectRole('user')">🙋‍♂️ مستخدم عادي</button>
+      <button onclick="selectRole('company')">🏢 شركة</button>
+      <button onclick="selectRole('vip')">💎 VIP</button>
+      <button onclick="selectRole('dev')">💻 مطور</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    Powered by OptaVita OS · All Rights Reserved © 2025
+  </div>
+
+  <script>
+    function selectLang(lang) {
+      localStorage.setItem('optavita_language', lang);
+      checkRedirectReady();
+    }
+
+    function selectRole(role) {
+      localStorage.setItem('optavita_role', role);
+      checkRedirectReady();
+    }
+
+    function checkRedirectReady() {
+      const lang = localStorage.getItem('optavita_language');
+      const role = localStorage.getItem('optavita_role');
+      if (lang && role) {
+        // Redirect to dashboard or homepage
+        window.location.href = `${role}/index.html`;
+      }
+    }
+  </script>
+
 </body>
 </html>
