@@ -2,141 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to OptaVita OS</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OptaVita OS - Start Your Journey</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+  <!-- المرحلة 1: اختيار اللغة -->
+  <div id="language-section">
     <h1>🌍 Welcome to OptaVita OS</h1>
-    <p class="intro">The smartest AI-powered platform in the world.<br> Choose your language to begin your journey.</p>
-    
-    <input type="text" id="languageSearch" placeholder="🔍 Search your language..." />
-
-    <div id="languages" class="language-buttons"></div>
-
-    <button id="startButton" disabled>Start Your Journey</button>
+    <p>Please choose your language to begin your journey.</p>
+    <select id="language-select">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+      <option value="zh">中文</option>
+      <option value="ja">日本語</option>
+      <option value="tr">Türkçe</option>
+      <!-- زود لغات كمان هنا -->
+    </select>
+    <button onclick="goToLogin()">Start Your Journey</button>
   </div>
 
-  <script src="language-selector.js"></script>
+  <!-- المرحلة 2: تسجيل الدخول -->
+  <div id="login-section" style="display: none;">
+    <h2>🔐 Login to Your Account</h2>
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Password" />
+    <button onclick="goToUserType()">Login</button>
+  </div>
+
+  <!-- المرحلة 3: اختيار نوع المستخدم -->
+  <div id="user-type-section" style="display: none;">
+    <h2>👤 Select User Type</h2>
+    <button>Individual</button>
+    <button>Company</button>
+    <button>VIP</button>
+    <button>Developer</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
-body {
-  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-  font-family: 'Segoe UI', sans-serif;
-  color: white;
-  text-align: center;
-  padding: 50px;
+function goToLogin() {
+  document.getElementById("language-section").style.display = "none";
+  document.getElementById("login-section").style.display = "block";
 }
 
-.container {
-  max-width: 600px;
-  margin: auto;
+function goToUserType() {
+  document.getElementById("login-section").style.display = "none";
+  document.getElementById("user-type-section").style.display = "block";
 }
-
-h1 {
-  font-size: 2.8em;
-  margin-bottom: 10px;
-}
-
-.intro {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-}
-
-input {
-  padding: 12px;
-  width: 100%;
-  max-width: 400px;
-  border: none;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-
-.language-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 30px;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.language-buttons button {
-  background-color: #1e90ff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 20px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.language-buttons button:hover {
-  background-color: #4682b4;
-}
-
-#startButton {
-  background-color: #00c853;
-  color: white;
-  padding: 14px 28px;
-  font-size: 18px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  opacity: 0.6;
-  transition: all 0.3s;
-}
-
-#startButton.active {
-  opacity: 1;
-}
-
-#startButton:hover {
-  background-color: #00b44a;
-}
-const languages = [
-  "English", "العربية", "Français", "Español", "Deutsch", "中文", "日本語",
-  "한국어", "Português", "Русский", "Italiano", "Türkçe", "हिंदी", "فارسی"
-];
-
-const container = document.getElementById("languages");
-const searchInput = document.getElementById("languageSearch");
-const startBtn = document.getElementById("startButton");
-
-let selectedLanguage = "";
-
-function renderLanguages(filter = "") {
-  container.innerHTML = "";
-  languages
-    .filter(lang => lang.toLowerCase().includes(filter.toLowerCase()))
-    .forEach(lang => {
-      const btn = document.createElement("button");
-      btn.textContent = lang;
-      btn.onclick = () => {
-        selectedLanguage = lang;
-        startBtn.classList.add("active");
-        startBtn.disabled = false;
-        startBtn.textContent = lang === "العربية" ? "ابدأ رحلتك" :
-                               lang === "Français" ? "Commencer le voyage" :
-                               lang === "Español" ? "Comenzar viaje" :
-                               lang === "中文" ? "开始你的旅程" :
-                               lang === "日本語" ? "旅を始める" :
-                               "Start Your Journey";
-      };
-      container.appendChild(btn);
-    });
-}
-
-searchInput.addEventListener("input", e => {
-  renderLanguages(e.target.value);
-});
-
-startBtn.addEventListener("click", () => {
-  // انتقل إلى صفحة التسجيل
-  window.location.href = "signup.html"; // غيرها لاحقاً إذا غيرت اسم الصفحة
-});
-
-renderLanguages();
