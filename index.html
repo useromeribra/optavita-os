@@ -25,33 +25,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Select Your User Type - OptaVita OS</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1 class="headline" id="select-title">🚀 اختر نوع حسابك</h1>
-    <p class="subtitle" id="select-subtitle">أي من هذه يناسبك أكثر؟</p>
-
-    <div class="user-type-buttons">
-      <button class="user-btn" onclick="selectUser('basic')">👤 مستخدم عادي</button>
-      <button class="user-btn" onclick="selectUser('company')">🏢 شركة</button>
-      <button class="user-btn" onclick="selectUser('vip')">💎 VIP</button>
-      <button class="user-btn" onclick="selectUser('developer')">👨‍💻 مطور</button>
-    </div>
-  </div>
-
-  <script>
-    function selectUser(type) {
-      alert("تم اختيار نوع الحساب: " + type + " ✅");
-      // هنا تقدر تضيف توجيه لصفحة المستخدم حسب نوعه
-      // window.location.href = `${type}.html`;
-    }
-  </script>
-</body>
-</html>
