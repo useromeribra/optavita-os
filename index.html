@@ -3,121 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OptaVita OS - Choose Language & Role</title>
+  <title>Welcome to OptaVita OS</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      background: linear-gradient(135deg, #090a0f, #1c1f26);
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #00ffd5;
-    }
-
-    .section {
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    .section h2 {
-      margin-bottom: 15px;
-      color: #ffffffc0;
-    }
-
-    .btn-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #00ffd5;
-      border: none;
-      border-radius: 8px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #00cca9;
-    }
-
-    .footer {
-      margin-top: 30px;
-      color: #888;
-      font-size: 0.9rem;
-    }
-  </style>
 </head>
 <body>
+  <div class="container">
+    <h1>🌍 Welcome to OptaVita OS</h1>
+    <p class="intro">The smartest AI-powered platform in the world.<br> Choose your language to begin your journey.</p>
+    
+    <input type="text" id="languageSearch" placeholder="🔍 Search your language..." />
 
-  <h1>🌐 OptaVita OS</h1>
+    <div id="languages" class="language-buttons"></div>
 
-  <div class="section">
-    <h2>اختر لغتك المفضلة / Choose Your Language</h2>
-    <div class="btn-grid" id="languageSelection">
-      <button onclick="selectLang('en')">English</button>
-      <button onclick="selectLang('ar')">العربية</button>
-      <button onclick="selectLang('zh')">中文</button>
-      <button onclick="selectLang('fr')">Français</button>
-      <button onclick="selectLang('tr')">Türkçe</button>
-      <button onclick="selectLang('ja')">日本語</button>
-      <button onclick="selectLang('ru')">Русский</button>
-      <button onclick="selectLang('es')">Español</button>
-    </div>
+    <button id="startButton" disabled>Start Your Journey</button>
   </div>
 
-  <div class="section">
-    <h2>اختر نوع المستخدم / Choose User Type</h2>
-    <div class="btn-grid" id="userSelection">
-      <button onclick="selectRole('founder')">👑 المؤسس</button>
-      <button onclick="selectRole('user')">🙋‍♂️ مستخدم عادي</button>
-      <button onclick="selectRole('company')">🏢 شركة</button>
-      <button onclick="selectRole('vip')">💎 VIP</button>
-      <button onclick="selectRole('dev')">💻 مطور</button>
-    </div>
-  </div>
-
-  <div class="footer">
-    Powered by OptaVita OS · All Rights Reserved © 2025
-  </div>
-
-  <script>
-    function selectLang(lang) {
-      localStorage.setItem('optavita_language', lang);
-      checkRedirectReady();
-    }
-
-    function selectRole(role) {
-      localStorage.setItem('optavita_role', role);
-      checkRedirectReady();
-    }
-
-    function checkRedirectReady() {
-      const lang = localStorage.getItem('optavita_language');
-      const role = localStorage.getItem('optavita_role');
-      if (lang && role) {
-        // Redirect to dashboard or homepage
-        window.location.href = `${role}/index.html`;
-      }
-    }
-  </script>
-
+  <script src="language-selector.js"></script>
 </body>
 </html>
+body {
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  text-align: center;
+  padding: 50px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+}
+
+.intro {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+input {
+  padding: 12px;
+  width: 100%;
+  max-width: 400px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.language-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.language-buttons button {
+  background-color: #1e90ff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.language-buttons button:hover {
+  background-color: #4682b4;
+}
+
+#startButton {
+  background-color: #00c853;
+  color: white;
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+#startButton.active {
+  opacity: 1;
+}
+
+#startButton:hover {
+  background-color: #00b44a;
+}
+const languages = [
+  "English", "العربية", "Français", "Español", "Deutsch", "中文", "日本語",
+  "한국어", "Português", "Русский", "Italiano", "Türkçe", "हिंदी", "فارسی"
+];
+
+const container = document.getElementById("languages");
+const searchInput = document.getElementById("languageSearch");
+const startBtn = document.getElementById("startButton");
+
+let selectedLanguage = "";
+
+function renderLanguages(filter = "") {
+  container.innerHTML = "";
+  languages
+    .filter(lang => lang.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(lang => {
+      const btn = document.createElement("button");
+      btn.textContent = lang;
+      btn.onclick = () => {
+        selectedLanguage = lang;
+        startBtn.classList.add("active");
+        startBtn.disabled = false;
+        startBtn.textContent = lang === "العربية" ? "ابدأ رحلتك" :
+                               lang === "Français" ? "Commencer le voyage" :
+                               lang === "Español" ? "Comenzar viaje" :
+                               lang === "中文" ? "开始你的旅程" :
+                               lang === "日本語" ? "旅を始める" :
+                               "Start Your Journey";
+      };
+      container.appendChild(btn);
+    });
+}
+
+searchInput.addEventListener("input", e => {
+  renderLanguages(e.target.value);
+});
+
+startBtn.addEventListener("click", () => {
+  // انتقل إلى صفحة التسجيل
+  window.location.href = "signup.html"; // غيرها لاحقاً إذا غيرت اسم الصفحة
+});
+
+renderLanguages();
