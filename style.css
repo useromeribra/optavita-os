@@ -1,72 +1,74 @@
 body {
-  font-family: 'Cairo', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(to right, #001f3f, #003366);
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.main-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
+.container {
   text-align: center;
+  padding: 20px;
 }
 
-header.hero {
-  margin-bottom: 50px;
-}
-
-header.hero h1 {
+.headline {
   font-size: 2.5em;
-  margin-bottom: 10px;
-  color: #00ffd5;
+  margin-bottom: 0.3em;
 }
 
-header.hero p {
+.subtitle {
   font-size: 1.2em;
-  color: #ccc;
+  margin-bottom: 1.5em;
 }
 
-button {
-  padding: 12px 24px;
+#language-search {
+  padding: 10px;
   font-size: 1em;
-  background-color: #00ffd5;
+  width: 60%;
+  margin-bottom: 1em;
+  border-radius: 10px;
+  border: none;
+}
+
+#language-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.lang-btn {
+  padding: 10px 20px;
+  background-color: #00c2ff;
   border: none;
   border-radius: 8px;
-  color: #000;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: bold;
+  color: #000;
+  transition: 0.3s;
 }
 
-button:hover {
-  background-color: #00c9aa;
+.lang-btn:hover {
+  background-color: #00b3e6;
 }
 
-section.dashboard {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 40px;
-  box-shadow: 0 0 20px #00ffd5;
-}
-
-section.dashboard ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-section.dashboard li {
-  margin: 15px 0;
+#start-btn {
+  padding: 12px 30px;
   font-size: 1.1em;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
   border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-section.cta {
-  background-color: #111;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px #00ffd5;
+#start-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
 }
