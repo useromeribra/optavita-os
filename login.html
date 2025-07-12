@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login or Create Account - OptaVita OS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>Welcome to OptaVita OS</h1>
+    <p>🚀 Unlock the power of AI – Login or Create your account</p>
+
+    <div class="form-group">
+      <input type="email" id="email" placeholder="Email address" />
+    </div>
+    <div class="form-group">
+      <input type="password" id="password" placeholder="Password" />
+    </div>
+
+    <div class="form-buttons">
+      <button class="btn login-btn" onclick="fakeLogin()">Login</button>
+      <button class="btn create-btn" onclick="fakeRegister()">Create Account</button>
+    </div>
+
+    <div id="status"></div>
+  </div>
+
+  <script>
+    function fakeLogin() {
+      const email = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+      if (email && pass) {
+        document.getElementById("status").innerHTML = "<span style='color:lightgreen'>✅ Login successful! Redirecting...</span>";
+        setTimeout(() => window.location.href = "usertype.html", 2000);
+      } else {
+        document.getElementById("status").innerHTML = "<span style='color:salmon'>❌ Please fill in all fields</span>";
+      }
+    }
+
+    function fakeRegister() {
+      const email = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+      if (email && pass) {
+        document.getElementById("status").innerHTML = "<span style='color:lightgreen'>✅ Account created! Redirecting...</span>";
+        setTimeout(() => window.location.href = "usertype.html", 2000);
+      } else {
+        document.getElementById("status").innerHTML = "<span style='color:salmon'>❌ Please fill in all fields</span>";
+      }
+    }
+  </script>
+</body>
+</html>
