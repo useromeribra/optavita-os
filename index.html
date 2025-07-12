@@ -2,44 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OptaVita OS - Start Your Journey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OptaVita OS - Experience the Future</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(to right, #001f3f, #0074D9);
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
       text-align: center;
-      padding-top: 50px;
+      padding-top: 60px;
     }
 
     .hidden {
       display: none;
     }
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 18px;
-      margin-bottom: 30px;
+    h1, h2 {
+      text-shadow: 0 0 8px rgba(255,255,255,0.5);
     }
 
     select, input, button {
       padding: 12px;
       font-size: 16px;
-      margin: 10px;
+      margin: 8px;
       border: none;
       border-radius: 8px;
+      outline: none;
     }
 
     select {
-      width: 200px;
+      width: 220px;
     }
 
     button {
@@ -47,72 +42,107 @@
       color: #000;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s;
+      transition: all 0.3s;
     }
 
     button:hover {
       background-color: #00e6b8;
+      transform: scale(1.05);
     }
 
-    .glow {
-      text-shadow: 0 0 10px white;
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   </style>
 </head>
 <body>
-  <!-- اللغة -->
-  <div id="language-section">
-    <h1 class="glow">🌍 Welcome to OptaVita OS</h1>
-    <p>The smartest platform in the world. Please choose your language to begin your journey.</p>
+  <div id="language-section" class="container">
+    <h1>🌍 Welcome to OptaVita OS</h1>
+    <p>The world's smartest AI-powered platform. Start your journey by selecting a language.</p>
     <select id="language-select">
       <option value="">-- Choose Language --</option>
-      <option value="en">English</option>
-      <option value="ar">العربية</option>
-      <option value="zh">中文</option>
-      <option value="ja">日本語</option>
-      <option value="tr">Türkçe</option>
-      <option value="es">Español</option>
-      <option value="fr">Français</option>
-      <option value="de">Deutsch</option>
-      <!-- ضيف قد ما بدك لغات -->
+      <option>English</option>
+      <option>العربية</option>
+      <option>中文</option>
+      <option>日本語</option>
+      <option>Türkçe</option>
+      <option>Español</option>
+      <option>Français</option>
+      <option>Deutsch</option>
+      <option>Português</option>
+      <option>Italiano</option>
+      <option>Русский</option>
+      <option>한국어</option>
+      <option>Hindi</option>
+      <option>فارسی</option>
+      <option>Bahasa Indonesia</option>
+      <option>ไทย</option>
+      <option>עברית</option>
+      <option>Polski</option>
+      <option>Čeština</option>
+      <option>Українська</option>
     </select>
     <br>
     <button onclick="goToLogin()">🚀 Start Your Journey</button>
   </div>
 
-  <!-- تسجيل الدخول -->
-  <div id="login-section" class="hidden">
-    <h2 class="glow">🔐 Login to Your Account</h2>
-    <input type="email" placeholder="Email Address" /><br>
-    <input type="password" placeholder="Password" /><br>
-    <button onclick="goToUserType()">Login</button>
+  <div id="login-section" class="container hidden">
+    <h2>🔐 Get Access to OptaVita</h2>
+    <div class="btn-row">
+      <button onclick="alert('Redirecting to Login...')">🔓 Login</button>
+      <button onclick="alert('Redirecting to Sign In...')">🔑 Sign In</button>
+      <button onclick="alert('Redirecting to Create Account...')">📝 Create Account</button>
+    </div>
+    <br>
+    <button onclick="goToUserType()">Continue</button>
   </div>
 
-  <!-- نوع المستخدم -->
-  <div id="user-type-section" class="hidden">
-    <h2 class="glow">👥 Choose User Type</h2>
-    <button>👤 Individual</button>
-    <button>🏢 Company</button>
-    <button>💎 VIP</button>
-    <button>👨‍💻 Developer</button>
+  <div id="user-type-section" class="container hidden">
+    <h2>👥 Choose User Type</h2>
+    <div class="btn-row">
+      <button>👤 Individual</button>
+      <button>🏢 Company</button>
+      <button>💎 VIP</button>
+      <button>👨‍💻 Developer</button>
+    </div>
   </div>
 
   <script>
+    let isLoggedIn = false;
+
     function goToLogin() {
-      const selectedLang = document.getElementById("language-select").value;
-      if (!selectedLang) {
-        alert("Please choose a language!");
+      const lang = document.getElementById("language-select").value;
+      if (!lang) {
+        alert("Please select a language to continue.");
         return;
       }
-
       document.getElementById("language-section").style.display = "none";
       document.getElementById("login-section").style.display = "block";
     }
 
     function goToUserType() {
+      if (!isLoggedIn) {
+        alert("Please Login or Create Account first.");
+        return;
+      }
       document.getElementById("login-section").style.display = "none";
       document.getElementById("user-type-section").style.display = "block";
     }
+
+    // Simulate login for now
+    document.querySelectorAll('#login-section .btn-row button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        isLoggedIn = true;
+        alert("✅ Success! You're logged in.");
+      });
+    });
   </script>
 </body>
 </html>
