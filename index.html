@@ -15,13 +15,56 @@
       <label for="language-search">Choose your language:</label>
       <input type="text" id="language-search" placeholder="Search language..."/>
       <div id="language-buttons">
-        <!-- languages will be generated here -->
+        <!-- Language buttons will be generated here -->
       </div>
     </div>
 
     <button id="start-btn" disabled>Start your journey</button>
   </div>
 
-  <script src="app.js"></script>
+  <script>
+    const languages = [
+      "English", "Arabic", "Spanish", "French", "German", "Chinese", "Japanese", "Korean", "Hindi",
+      "Portuguese", "Russian", "Turkish", "Italian", "Dutch", "Swedish", "Norwegian", "Thai",
+      "Indonesian", "Vietnamese", "Hebrew"
+    ];
+
+    const languageButtonsContainer = document.getElementById("language-buttons");
+    const searchInput = document.getElementById("language-search");
+    const startBtn = document.getElementById("start-btn");
+
+    let selectedLanguage = "";
+
+    function renderLanguages(filter = "") {
+      languageButtonsContainer.innerHTML = "";
+      const filtered = languages.filter(lang =>
+        lang.toLowerCase().includes(filter.toLowerCase())
+      );
+      filtered.forEach(lang => {
+        const btn = document.createElement("button");
+        btn.textContent = lang;
+        btn.classList.add("lang-btn");
+        btn.onclick = () => {
+          selectedLanguage = lang;
+          startBtn.disabled = false;
+          startBtn.textContent = lang === "Arabic" ? "ابدأ رحلتك" : "Start your journey";
+        };
+        languageButtonsContainer.appendChild(btn);
+      });
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      renderLanguages(e.target.value);
+    });
+
+    startBtn.addEventListener("click", () => {
+      if (selectedLanguage) {
+        localStorage.setItem("userLanguage", selectedLanguage);
+        window.location.href = "auth.html";
+      }
+    });
+
+    renderLanguages();
+  </script>
 </body>
 </html>
