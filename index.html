@@ -3,57 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OptaVita OS - Start Your Journey</title>
+  <title>OptaVita OS - Choose Your Language</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1 class="headline">🌍 Welcome to OptaVita OS</h1>
-    <p class="subtitle">Experience the future of intelligence — start your journey now.</p>
+    <p class="subtitle">Choose your language and begin your journey.</p>
 
-    <div class="language-section">
-      <label for="language-search">Choose your language:</label>
-      <input type="text" id="language-search" placeholder="Search language..."/>
-      <div id="language-buttons">
-        <!-- Language buttons will be generated here -->
-      </div>
+    <input type="text" id="language-search" placeholder="🔍 Search your language..." />
+
+    <div id="language-buttons">
+      <!-- Language buttons will be inserted here -->
     </div>
 
-    <button id="start-btn" disabled>Start your journey</button>
+    <button id="start-btn" disabled>Start</button>
   </div>
 
   <script>
     const languages = [
-      "English", "Arabic", "Spanish", "French", "German", "Chinese", "Japanese", "Korean", "Hindi",
-      "Portuguese", "Russian", "Turkish", "Italian", "Dutch", "Swedish", "Norwegian", "Thai",
-      "Indonesian", "Vietnamese", "Hebrew"
+      { name: "English", native: "English" },
+      { name: "Arabic", native: "العربية" },
+      { name: "French", native: "Français" },
+      { name: "Spanish", native: "Español" },
+      { name: "German", native: "Deutsch" },
+      { name: "Chinese", native: "中文" },
+      { name: "Japanese", native: "日本語" },
+      { name: "Turkish", native: "Türkçe" },
+      { name: "Russian", native: "Русский" },
+      { name: "Hindi", native: "हिन्दी" },
+      { name: "Korean", native: "한국어" },
+      { name: "Portuguese", native: "Português" },
+      { name: "Italian", native: "Italiano" },
+      { name: "Dutch", native: "Nederlands" }
     ];
 
-    const languageButtonsContainer = document.getElementById("language-buttons");
+    let selectedLanguage = null;
+
     const searchInput = document.getElementById("language-search");
+    const buttonsContainer = document.getElementById("language-buttons");
     const startBtn = document.getElementById("start-btn");
 
-    let selectedLanguage = "";
-
     function renderLanguages(filter = "") {
-      languageButtonsContainer.innerHTML = "";
-      const filtered = languages.filter(lang =>
-        lang.toLowerCase().includes(filter.toLowerCase())
-      );
-      filtered.forEach(lang => {
-        const btn = document.createElement("button");
-        btn.textContent = lang;
-        btn.classList.add("lang-btn");
-        btn.onclick = () => {
-          selectedLanguage = lang;
-          startBtn.disabled = false;
-          startBtn.textContent = lang === "Arabic" ? "ابدأ رحلتك" : "Start your journey";
-        };
-        languageButtonsContainer.appendChild(btn);
-      });
+      buttonsContainer.innerHTML = "";
+      languages
+        .filter(lang => lang.name.toLowerCase().includes(filter.toLowerCase()) || lang.native.includes(filter))
+        .forEach(lang => {
+          const btn = document.createElement("button");
+          btn.className = "lang-btn";
+          btn.innerText = lang.native;
+          btn.onclick = () => {
+            selectedLanguage = lang.name;
+            startBtn.disabled = false;
+            startBtn.innerText = lang.name === "Arabic" ? "ابدأ رحلتك" : "Start your journey";
+          };
+          buttonsContainer.appendChild(btn);
+        });
     }
 
-    searchInput.addEventListener("input", (e) => {
+    searchInput.addEventListener("input", e => {
       renderLanguages(e.target.value);
     });
 
