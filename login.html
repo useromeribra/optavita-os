@@ -3,50 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login or Create Account - OptaVita OS</title>
+  <title>Login - OptaVita OS</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #001f3f, #003366);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group input {
+      padding: 10px;
+      width: 80%;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .form-buttons {
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      background-color: #28a745;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .error-message {
+      color: #ff8080;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="login-container">
-    <h1>Welcome to OptaVita OS</h1>
-    <p>🚀 Unlock the power of AI – Login or Create your account</p>
-
+    <h1>🔐 Secure Login</h1>
     <div class="form-group">
-      <input type="email" id="email" placeholder="Email address" />
+      <input type="email" id="email" placeholder="Enter your email" />
     </div>
     <div class="form-group">
-      <input type="password" id="password" placeholder="Password" />
+      <input type="password" id="password" placeholder="Enter your password" />
     </div>
-
     <div class="form-buttons">
-      <button class="btn login-btn" onclick="fakeLogin()">Login</button>
-      <button class="btn create-btn" onclick="fakeRegister()">Create Account</button>
+      <button class="btn" onclick="validateLogin()">Login</button>
     </div>
-
-    <div id="status"></div>
+    <div id="error" class="error-message"></div>
   </div>
 
   <script>
-    function fakeLogin() {
-      const email = document.getElementById("email").value;
-      const pass = document.getElementById("password").value;
-      if (email && pass) {
-        document.getElementById("status").innerHTML = "<span style='color:lightgreen'>✅ Login successful! Redirecting...</span>";
-        setTimeout(() => window.location.href = "usertype.html", 2000);
-      } else {
-        document.getElementById("status").innerHTML = "<span style='color:salmon'>❌ Please fill in all fields</span>";
-      }
-    }
+    function validateLogin() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorDiv = document.getElementById("error");
 
-    function fakeRegister() {
-      const email = document.getElementById("email").value;
-      const pass = document.getElementById("password").value;
-      if (email && pass) {
-        document.getElementById("status").innerHTML = "<span style='color:lightgreen'>✅ Account created! Redirecting...</span>";
-        setTimeout(() => window.location.href = "usertype.html", 2000);
-      } else {
-        document.getElementById("status").innerHTML = "<span style='color:salmon'>❌ Please fill in all fields</span>";
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!email || !password) {
+        errorDiv.textContent = "Please enter both email and password.";
+        return;
       }
+
+      if (!emailRegex.test(email)) {
+        errorDiv.textContent = "Invalid email format.";
+        return;
+      }
+
+      if (password.length < 6) {
+        errorDiv.textContent = "Password must be at least 6 characters.";
+        return;
+      }
+
+      // ✅ Passed all checks
+      errorDiv.textContent = "";
+      localStorage.setItem("userEmail", email);
+      window.location.href = "select-role.html";
     }
   </script>
 </body>
