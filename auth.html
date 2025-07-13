@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auth - OptaVita OS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1 id="welcome-text">👋 Welcome!</h1>
+    <p id="sub-text">Please login or create an account to continue.</p>
+
+    <div class="form-group">
+      <input type="text" id="username" placeholder="👤 Username" />
+    </div>
+    <div class="form-group">
+      <input type="password" id="password" placeholder="🔒 Password" />
+    </div>
+
+    <div class="form-buttons">
+      <button class="btn login-btn" onclick="login()">Login</button>
+      <button class="btn create-btn" onclick="createAccount()">Create Account</button>
+    </div>
+  </div>
+
+  <script>
+    const userLang = localStorage.getItem("userLanguage") || "English";
+
+    const translations = {
+      English: {
+        welcome: "👋 Welcome!",
+        sub: "Please login or create an account to continue.",
+        username: "👤 Username",
+        password: "🔒 Password",
+        login: "Login",
+        create: "Create Account"
+      },
+      العربية: {
+        welcome: "👋 مرحبًا!",
+        sub: "يرجى تسجيل الدخول أو إنشاء حساب للمتابعة.",
+        username: "👤 اسم المستخدم",
+        password: "🔒 كلمة المرور",
+        login: "تسجيل الدخول",
+        create: "إنشاء حساب"
+      },
+      Français: {
+        welcome: "👋 Bienvenue!",
+        sub: "Veuillez vous connecter ou créer un compte.",
+        username: "👤 Nom d'utilisateur",
+        password: "🔒 Mot de passe",
+        login: "Connexion",
+        create: "Créer un compte"
+      },
+      Español: {
+        welcome: "👋 ¡Bienvenido!",
+        sub: "Por favor inicia sesión o crea una cuenta.",
+        username: "👤 Usuario",
+        password: "🔒 Contraseña",
+        login: "Iniciar sesión",
+        create: "Crear cuenta"
+      },
+      中文: {
+        welcome: "👋 欢迎！",
+        sub: "请登录或创建账户继续。",
+        username: "👤 用户名",
+        password: "🔒 密码",
+        login: "登录",
+        create: "创建账户"
+      }
+      // يمكنك إضافة باقي اللغات هنا بسهولة
+    };
+
+    const lang = translations[userLang] || translations["English"];
+    document.getElementById("welcome-text").innerText = lang.welcome;
+    document.getElementById("sub-text").innerText = lang.sub;
+    document.getElementById("username").placeholder = lang.username;
+    document.getElementById("password").placeholder = lang.password;
+    document.querySelector(".login-btn").innerText = lang.login;
+    document.querySelector(".create-btn").innerText = lang.create;
+
+    function login() {
+      alert(lang.login + " successful!");
+      window.location.href = "select-role.html";
+    }
+
+    function createAccount() {
+      alert(lang.create + " successful!");
+      window.location.href = "select-role.html";
+    }
+  </script>
+</body>
+</html>
