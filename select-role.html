@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select User Type - OptaVita OS</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #001f3f, #003366);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .role-container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.06);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    .role-container h2 {
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+
+    .role-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .role-btn {
+      padding: 15px 30px;
+      font-size: 1em;
+      background-color: #00c2ff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .role-btn:hover {
+      background-color: #00a8e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="role-container">
+    <h2 id="select-role-title">Select Your User Type</h2>
+    <div class="role-buttons">
+      <button class="role-btn" onclick="selectRole('user')">🧑 Normal User</button>
+      <button class="role-btn" onclick="selectRole('company')">🏢 Company</button>
+      <button class="role-btn" onclick="selectRole('vip')">👑 VIP</button>
+      <button class="role-btn" onclick="selectRole('dev')">💻 Developer</button>
+    </div>
+  </div>
+
+  <script>
+    const lang = localStorage.getItem("selectedLanguage") || "en";
+    const roleTexts = {
+      en: {
+        title: "Select Your User Type",
+        user: "🧑 Normal User",
+        company: "🏢 Company",
+        vip: "👑 VIP",
+        dev: "💻 Developer"
+      },
+      ar: {
+        title: "اختر نوع المستخدم",
+        user: "🧑 مستخدم عادي",
+        company: "🏢 شركة",
+        vip: "👑 VIP",
+        dev: "💻 مطور"
+      },
+      fr: {
+        title: "Sélectionnez votre type d'utilisateur",
+        user: "🧑 Utilisateur",
+        company: "🏢 Entreprise",
+        vip: "👑 VIP",
+        dev: "💻 Développeur"
+      },
+      // أضف باقي اللغات هنا
+    };
+
+    const texts = roleTexts[lang] || roleTexts.en;
+    document.getElementById("select-role-title").innerText = texts.title;
+    const buttons = document.querySelectorAll(".role-btn");
+    buttons[0].innerText = texts.user;
+    buttons[1].innerText = texts.company;
+    buttons[2].innerText = texts.vip;
+    buttons[3].innerText = texts.dev;
+
+    function selectRole(role) {
+      localStorage.setItem("userType", role);
+      window.location.href = "dashboard.html"; // لاحقًا نوجهه حسب نوع المستخدم
+    }
+  </script>
+</body>
+</html>
