@@ -2,24 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OptaVita OS - Choose Language</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1 class="headline">🌍 Welcome to OptaVita OS</h1>
-    <p class="subtitle">Experience the future of intelligence. Select your language to begin.</p>
-
-    <input type="text" id="language-search" placeholder="Search language..." />
-
-    <div id="language-buttons">
-      <!-- اللغات تنضاف تلقائيًا -->
+    <p class="subtitle">Experience the future of intelligence — start your journey now.</p>
+    <div class="language-section">
+      <label for="language-search">Choose your language:</label>
+      <input type="text" id="language-search" placeholder="Search language..." />
+      <div id="language-buttons"></div>
     </div>
-
-    <button id="start-btn" disabled>Start Your Journey</button>
+    <button id="start-btn" disabled>Start your journey</button>
   </div>
-
   <script src="language.js"></script>
 </body>
 </html>
