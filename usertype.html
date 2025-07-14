@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select User Type | OptaVita OS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">Choose your user type</h1>
+    <p id="subtitle">Customize your OptaVita experience</p>
+
+    <div id="user-types">
+      <button class="user-btn" data-type="basic">🧍 Basic</button>
+      <button class="user-btn" data-type="business">🏢 Business</button>
+      <button class="user-btn" data-type="vip">💎 VIP</button>
+      <button class="user-btn" data-type="developer">👨‍💻 Developer</button>
+    </div>
+  </div>
+
+  <script>
+    const lang = localStorage.getItem("optavita_lang") || "en";
+
+    const translations = {
+      en: {
+        title: "Choose your user type",
+        subtitle: "Customize your OptaVita experience",
+        basic: "🧍 Basic",
+        business: "🏢 Business",
+        vip: "💎 VIP",
+        developer: "👨‍💻 Developer",
+      },
+      ar: {
+        title: "اختر نوع المستخدم",
+        subtitle: "خصص تجربتك في OptaVita",
+        basic: "🧍 عادي",
+        business: "🏢 شركة",
+        vip: "💎 VIP",
+        developer: "👨‍💻 مطور",
+      },
+      fr: {
+        title: "Choisissez votre type d'utilisateur",
+        subtitle: "Personnalisez votre expérience OptaVita",
+        basic: "🧍 Basique",
+        business: "🏢 Entreprise",
+        vip: "💎 VIP",
+        developer: "👨‍💻 Développeur",
+      }
+      // أضف باقي اللغات حسب رغبتك
+    };
+
+    const t = translations[lang] || translations["en"];
+    document.getElementById("title").textContent = t.title;
+    document.getElementById("subtitle").textContent = t.subtitle;
+
+    const buttons = document.querySelectorAll(".user-btn");
+    buttons[0].textContent = t.basic;
+    buttons[1].textContent = t.business;
+    buttons[2].textContent = t.vip;
+    buttons[3].textContent = t.developer;
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const type = btn.getAttribute("data-type");
+        localStorage.setItem("optavita_user_type", type);
+        alert(`${type} selected!`);
+        window.location.href = "dashboard.html";
+      });
+    });
+  </script>
+</body>
+</html>
