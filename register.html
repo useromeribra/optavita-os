@@ -1,56 +1,38 @@
+<!-- register.html (واجهة التسجيل الفاخرة) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Register - OptaVita OS</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | OptaVita OS</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="login-container">
-    <h1 id="reg-title">Welcome to OptaVita OS</h1>
-    <p id="reg-sub">Please choose how you'd like to continue</p>
+    <h1>Create Account</h1>
+    <p class="subtitle">Join the future of intelligence</p>
 
-    <div class="form-buttons">
-      <button class="btn login-btn" onclick="handleAction('login')">Login</button>
-      <button class="btn create-btn" onclick="handleAction('create')">Create Account</button>
+    <div class="form-group">
+      <input type="email" placeholder="Email">
     </div>
+    <div class="form-group">
+      <input type="password" placeholder="Password">
+    </div>
+    <div class="form-buttons">
+      <button class="btn login-btn" onclick="fakeLogin()">Log In</button>
+      <button class="btn create-btn" onclick="fakeRegister()">Create Account</button>
+    </div>
+    <p id="response" class="subtitle"></p>
   </div>
 
   <script>
-    const lang = localStorage.getItem("optavita_lang") || "en";
-
-    const translations = {
-      en: {
-        title: "Welcome to OptaVita OS",
-        sub: "Please choose how you'd like to continue",
-        login: "Login",
-        create: "Create Account",
-      },
-      ar: {
-        title: "مرحبًا بك في أوبتافيتا",
-        sub: "يرجى اختيار كيفية المتابعة",
-        login: "تسجيل دخول",
-        create: "إنشاء حساب",
-      },
-      fr: {
-        title: "Bienvenue sur OptaVita OS",
-        sub: "Choisissez comment vous souhaitez continuer",
-        login: "Se connecter",
-        create: "Créer un compte",
-      },
-      // يمكنك إضافة باقي اللغات بنفس النمط
-    };
-
-    const t = translations[lang] || translations["en"];
-    document.getElementById("reg-title").textContent = t.title;
-    document.getElementById("reg-sub").textContent = t.sub;
-    document.querySelector(".login-btn").textContent = t.login;
-    document.querySelector(".create-btn").textContent = t.create;
-
-    function handleAction(action) {
-      localStorage.setItem("optavita_auth_action", action);
-      window.location.href = "usertype.html";
+    function fakeLogin() {
+      document.getElementById("response").textContent = "✅ Logged in successfully.";
+      setTimeout(() => window.location.href = 'user-type.html', 1500);
+    }
+    function fakeRegister() {
+      document.getElementById("response").textContent = "✅ Account created successfully.";
+      setTimeout(() => window.location.href = 'user-type.html', 1500);
     }
   </script>
 </body>
