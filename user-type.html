@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select User Type</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="headline">Choose your user type</h1>
+    <div id="language-buttons">
+      <button class="lang-btn" onclick="selectType('regular')">🌐 Regular User</button>
+      <button class="lang-btn" onclick="selectType('company')">🏢 Company</button>
+      <button class="lang-btn" onclick="selectType('vip')">👑 VIP</button>
+      <button class="lang-btn" onclick="selectType('developer')">👨‍💻 Developer</button>
+    </div>
+  </div>
+  <script>
+    function selectType(type) {
+      alert("✅ You selected: " + type);
+      // redirect later to dashboard
+    }
+  </script>
+</body>
+</html>
