@@ -2,25 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Select User Type</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select User Type - OptaVita OS</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .headline {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .type-btn {
+      padding: 15px 30px;
+      font-size: 1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .regular { background-color: #007bff; color: white; }
+    .vip     { background-color: #ffcc00; color: black; }
+    .company { background-color: #28a745; color: white; }
+    .dev     { background-color: #6f42c1; color: white; }
+
+    .type-btn:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
+
   <div class="container">
-    <h1 class="headline">Choose your user type</h1>
-    <div id="language-buttons">
-      <button class="lang-btn" onclick="selectType('regular')">🌐 Regular User</button>
-      <button class="lang-btn" onclick="selectType('company')">🏢 Company</button>
-      <button class="lang-btn" onclick="selectType('vip')">👑 VIP</button>
-      <button class="lang-btn" onclick="selectType('developer')">👨‍💼 Developer</button>
+    <h1 class="headline">🔍 Choose Your User Type</h1>
+    <div class="btn-group">
+      <button class="type-btn regular" onclick="selectUser('Regular')">👤 Regular User</button>
+      <button class="type-btn vip" onclick="selectUser('VIP')">👑 VIP</button>
+      <button class="type-btn company" onclick="selectUser('Company')">🏢 Company</button>
+      <button class="type-btn dev" onclick="selectUser('Developer')">👨‍💻 Developer</button>
     </div>
   </div>
+
   <script>
-    function selectType(type) {
-      alert("✅ You selected: " + type);
-      // redirect later to dashboard
+    function selectUser(type) {
+      alert(`✅ ${type} selected! Redirecting to your dashboard...`);
+      // مستقبلاً يتم التوجيه بناءً على النوع:
+      // window.location.href = `${type.toLowerCase()}-dashboard.html`;
     }
   </script>
+
 </body>
 </html>
