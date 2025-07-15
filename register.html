@@ -1,34 +1,103 @@
-set="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create Your Account</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="login-container">
-    <h1>Create Account</h1>
-    <div class="form-group">
-      <input type="email" placeholder="Email" id="email" />
-    </div>
-    <div class="form-group">
-      <input type="password" placeholder="Password" id="password" />
-    </div><!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta char
-    <div class="form-buttons">
-      <button class="btn create-btn" onclick="fakeRegister()">Create Account</button>
-      <button class="btn login-btn" onclick="fakeLogin()">Login</button>
-    </div>
-  </div>
-  <script>
-    function fakeRegister() {
-      alert("✅ Account created successfully (demo)");
-      window.location.href = 'user-type.html';
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - OptaVita OS</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: linear-gradient(to right, #001f3f, #003366);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-    function fakeLogin() {
-      alert("✅ Logged in successfully (demo)");
-      window.location.href = 'user-type.html';
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .login-container h1 {
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group input {
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      background-color: #28a745;
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    .error {
+      color: #ff4d4d;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>Create Your Account</h1>
+    <div class="form-group">
+      <input type="email" id="email" placeholder="Email" required />
+    </div>
+    <div class="form-group">
+      <input type="password" id="password" placeholder="Password" required />
+    </div>
+    <div class="form-group">
+      <button class="btn" onclick="registerUser()">Register</button>
+    </div>
+    <div class="error" id="error-message"></div>
+  </div>
+
+  <script>
+    function registerUser() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const error = document.getElementById("error-message");
+
+      // تحققات بسيطة
+      if (!email.includes("@") || password.length < 6) {
+        error.textContent = "❌ تأكد من صحة البريد وكلمة المرور (6 أحرف على الأقل).";
+        return;
+      }
+
+      alert("✅ Registered successfully! Redirecting to user type...");
+      window.location.href = "user-type.html";
     }
   </script>
+
 </body>
 </html>
