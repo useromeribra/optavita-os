@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VIP Dashboard - OptaVita OS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #000000, #1a1a1a);
+      color: gold;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #111;
+      border: 2px solid gold;
+      padding: 20px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      margin: 15px 0;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      background-color: #1a1a1a;
+    }
+
+    .logout {
+      margin-top: 40px;
+      background-color: gold;
+      color: black;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .logout:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <h1>👑 Welcome, VIP!</h1>
+  <p class="subtitle">Access your premium tools and intelligence services.</p>
+
+  <div class="card">🧠 Executive AI Advisor</div>
+  <div class="card">📈 Monthly Elite Reports</div>
+  <div class="card">⚙️ Manage Subscription</div>
+  <div class="card">💼 VIP Support & Concierge</div>
+
+  <button class="logout" onclick="logout()">Logout</button>
+
+  <script>
+    function logout() {
+      alert("Logging out...");
+      window.location.href = "language.html";
+    }
+  </script>
+</body>
+</html>
